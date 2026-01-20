@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>May I help you?</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='osk.css') }}">
+    <style>
+        .alexa-stop {
+            background-color: rgba(216, 69, 4, 0.58);
+        }
+
+        .alexa-stop:hover {
+            background-color: rgba(216, 69, 4, 0.8);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <img class="keyboard" src="{{ url_for('static', filename='keyboard.png')}}" alt="">
+        <h1>Hi! How can I help you?</h1>
+        <div class="user-input">
+            <span>Customization:</span>
+            <input type="text" name="user_input" id="user_input" placeholder="Type your command here" disabled>
+        </div>
+        <form method="post" action="/">
+            {% for index in range(options|length) %}
+            <button type="submit" name="user_input" value="{{ options[index] }}">{{ options[index] }}</button>
+            {% endfor %}
+            <button type="button" id="alexa-stop" class="alexa-stop">Alexa stop</button>
+        </form>
+    </div>
+    <div class="simple-keyboard" style="display: none;"></div>
+</body>
+<script src="{{ url_for('static', filename='osk.js')}}"></script>
+<script src="{{ url_for('static', filename='keyboard.js')}}"></script>
+<script>
+    document.getElementById('alexa-stop').addEventListener('click', function (event) {
+        event.preventDefault();
+        document.getElementById('alexa-stop').style.backgroundColor = 'rgba(216, 69, 4, 0.8)';
+        const wakeWordAudio = new Audio('{{ url_for("static", filename="ZiggyStop.m4a") }}');
+        wakeWordAudio.play();
+        wakeWordAudio.onended = function () {
+            window.location.href = '/clear';
+        };
+    });
+</script>
+
+</html>

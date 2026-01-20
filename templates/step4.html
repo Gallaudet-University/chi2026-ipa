@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Final Command</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'styles.css') }}">
+
+    <style>
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .option-button {
+            flex: 1;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1>Your final command is: {{ final_command }}. Does this look correct?</h1>
+        <form method="post" action="/final" style="flex-direction: column">
+            <div class="button-container">
+                <button type="submit" id="yes-button" name="final_check" value="yes" class="option-button">Yes</button>
+                <button type="submit" name="final_check" value="no" class="option-button">No</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function playCommand(command) {
+            const utterance = new SpeechSynthesisUtterance(command);
+            window.speechSynthesis.speak(utterance);
+        }
+
+        document.getElementById('yes-button').addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the form from submitting immediately
+
+            const wakeWordAudio = new Audio('{{ url_for("static", filename="wake_word.m4a") }}');
+            wakeWordAudio.play();
+
+            wakeWordAudio.onended = function () {
+                playCommand('{{ final_command | safe }}');
+                // Submit the form after playing the command
+                document.querySelector('form').submit();
+            };
+        });
+    </script>
+
+</body>
+
+</html>
