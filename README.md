@@ -10,6 +10,8 @@ In Proceedings of the 2026 CHI Conference on Human Factors in Computing
 Systems (CHI ’26), April 13–17, 2026, Barcelona, Spain. ACM, New York, NY,
 USA, 16 pages. https://doi.org/10.1145/3772318.3791869
 
+The latest version of this code can be found at https://github.com/Gallaudet-University/chi2026-ipa
+
 ## Running the code
 
 There are two main Python files: testing prompts in `chat_updated.py` and running
