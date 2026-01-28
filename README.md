@@ -2,13 +2,13 @@
 
 This code is provided as a companion to replicate the results in the following CHI 2026 paper:
 
-Paige S. DeVries, Michaela Okosi, Ming Li, Nora Dunphy, Gidey Gezae,
+Paige S DeVries, Michaela Okosi, Ming Li, Nora Dunphy, Gidey Gezae,
 Dante Conway, Abraham Glasser, Raja Kushalnagar, and Christian Vogler.
 2026. Deaf and Hard of Hearing Access to Intelligent Personal Assistants:
 Comparison of Voice-Based Options with an LLM-Powered Touch Interface.
 In Proceedings of the 2026 CHI Conference on Human Factors in Computing
 Systems (CHI ’26), April 13–17, 2026, Barcelona, Spain. ACM, New York, NY,
-USA, 16 pages. https://doi.org/10.1145/3772318.3791869
+USA, 17 pages. https://doi.org/10.1145/3772318.3791869
 
 The latest version of this code can be found at https://github.com/Gallaudet-University/chi2026-ipa
 
